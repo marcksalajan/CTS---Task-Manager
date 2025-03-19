@@ -60,7 +60,7 @@ public class Main {
             System.out.print("Enter username: ");
             String username = scanner.nextLine();
             taskManager.selectUser(username);
-        } catch (Exception exception) {
+        } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
     }

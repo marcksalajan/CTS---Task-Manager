@@ -23,7 +23,11 @@ public class TaskManager implements ITaskManager {
     public void selectUser(String username) {
         currentUser = users.stream()
                 .filter(user -> user.getUsername().equals(username))
-                .findFirst().orElseThrow(() -> new UserNotFoundException(username));
+                .findFirst().orElse(null);
+        if(currentUser == null) {
+            System.out.println(new UserNotFoundException("Selected user not found").getMessage());
+            return;
+        }
         System.out.println("Selected user: " + currentUser);
     }
 
